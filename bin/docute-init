@@ -10,6 +10,8 @@ const cli = meow({
   help: `
     Generate docs folder
 
+    Usage: ${chalk.yellow('docute init [dir] [options]')}
+
     Options:
       ${chalk.yellow('--docute-version, --dv')}       Use specified docute version
       ${chalk.yellow('--help, -h')}                   Print help

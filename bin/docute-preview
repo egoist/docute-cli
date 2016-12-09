@@ -4,6 +4,8 @@ import chalk from 'chalk'
 import express from 'express'
 
 const cli = meow(`
+Usage: ${chalk.yellow('docute [dir] [options]')}
+
 Commands:
   ${chalk.yellow('*, preview')}             Preview docs
   ${chalk.yellow('init')}                   Initialize a folder for docs
