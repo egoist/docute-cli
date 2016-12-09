@@ -4,11 +4,24 @@ import chalk from 'chalk'
 import express from 'express'
 
 const cli = meow(`
+Commands:
+  ${chalk.yellow('*, preview')}             Preview docs
+  ${chalk.yellow('init')}                   Initialize a folder for docs
+
 Options:
-  --port, -p          server port
+  ${chalk.yellow('--port, -p')}             Server port
+  ${chalk.yellow('--version, -v')}          Print version
+  ${chalk.yellow('--help, -h')}             Print help
+
+Examples:
+  docute                    ${chalk.dim('# Preview ./docs folder')}
+  docute ./website          ${chalk.dim('# preview ./website folder')}
+  docute --port 3000        ${chalk.dim('# running server at port 3000')}
 `, {
   alias: {
-    p: 'port'
+    p: 'port',
+    h: 'help',
+    v: 'version'
   }
 })
 const dir = cli.input[0] || './docs'

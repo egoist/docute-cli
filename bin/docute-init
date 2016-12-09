@@ -5,10 +5,24 @@ import chalk from 'chalk'
 import copy from 'graceful-copy'
 import pathExists from 'path-exists'
 
-const cli = meow(`
-`, {
-  f: 'force',
-  dv: 'docute-version'
+const cli = meow({
+  description: false,
+  help: `
+    Generate docs folder
+
+    Options:
+      ${chalk.yellow('--docute-version, --dv')}       Use specified docute version
+      ${chalk.yellow('--help, -h')}                   Print help
+
+    Examples:
+      docute init --docute-version beta     ${chalk.dim('# use beta version of docute')}
+  `
+}, {
+  alias: {
+    f: 'force',
+    dv: 'docute-version',
+    h: 'help'
+  }
 })
 
 function ownDir(...args) {
