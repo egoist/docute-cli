@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+import path from 'path'
+import meow from 'meow'
+import copy from 'graceful-copy'
+import pathExists from 'path-exists'
+
+const cli = meow(`
+`, {
+  f: 'force',
+  dv: 'docute-version'
+})
+
+function ownDir(...args) {
+  return path.join(__dirname, '../../', ...args)
+}
+
+function cwd(...args) {
+  return path.resolve(process.cwd(), ...args)
+}
+
+async function run() {
+  const dir = cli.input[0] || './docs'
+  const exists = await pathExists(cwd(dir))
+  if (exists && !cli.flags.force) {
+    return console.log(`dir ${dir} already exists, use \`docute init ${dir} --force\` to override it`)
+  }
+  await copy(
+    ownDir('./template'),
+    cwd(dir),
+    {
+      data: {
+        version: cli.flags.docuteVersion
+      }
+    }
+  )
+  console.log(`Successfully generated boilerplates for docs!`)
+  console.log(`Run \`docute ${dir}\` to preview docs`)
+}
+
+run()
+

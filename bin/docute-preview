@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+import meow from 'meow'
+import chalk from 'chalk'
+import express from 'express'
+
+const cli = meow(`
+Options:
+  --port, -p          server port
+`, {
+  alias: {
+    p: 'port'
+  }
+})
+const dir = cli.input[0] || './docs'
+
+const app = express()
+app.use('/', express.static(dir))
+
+const port = cli.flags.port || 8080
+app.listen(port)
+console.log()
+console.log(chalk.dim('  > hello docute user!'))
+console.log(`  > open ${chalk.yellow(`http://localhost:${port}`)} to preview`)
+console.log()

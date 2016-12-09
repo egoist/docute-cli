@@ -1,0 +1,57 @@
+{
+  "name": "docute-cli",
+  "version": "0.0.0",
+  "description": "Make docs from markdown files",
+  "license": "MIT",
+  "repository": "egoist/docute-cli",
+  "author": {
+    "name": "EGOIST",
+    "email": "0x142857@gmail.com",
+    "url": "github.com/egoist"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "jest && eslint *.js",
+    "build": "gulp build",
+    "dev": "gulp"
+  },
+  "files": [
+    "dist",
+    "template"
+  ],
+  "bin": {
+    "docute": "./dist/bin/docute"
+  },
+  "keywords": [
+    ""
+  ],
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-3": "^6.17.0",
+    "eslint": "latest",
+    "eslint-config-rem": "latest",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-chmod": "^2.0.0",
+    "gulp-named": "^1.0.0",
+    "jest-cli": "^15.1.1"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "eslintConfig": {
+    "extends": "rem/esnext"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.18.0",
+    "cross-spawn": "^5.0.1",
+    "express": "^4.14.0",
+    "graceful-copy": "^1.1.0",
+    "meow": "^3.7.0",
+    "path-exists": "^3.0.0"
+  }
+}
