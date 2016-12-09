@@ -14,17 +14,17 @@ task('bin', () => {
     .pipe(output('./dist/bin'))
 })
 
-// task('lib', () => {
-//   input(paths.lib)
-//     .pipe(babel())
-//     .pipe(output('./dist/lib'))
-// })
+task('lib', () => {
+  input(paths.lib)
+    .pipe(babel())
+    .pipe(output('./dist/lib'))
+})
 
 task('watch', () => {
   watch(paths.bin, ['bin'])
-  // watch(paths.lib, ['lib'])
+  watch(paths.lib, ['lib'])
 })
 
-task('build', ['bin'])
+task('build', ['bin', 'lib'])
 
-task('default', ['bin', 'watch'])
+task('default', ['build', 'watch'])
