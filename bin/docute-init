@@ -31,7 +31,7 @@ async function run() {
     cwd(dir),
     {
       data: {
-        version: cli.flags.docuteVersion
+        version: cli.flags.docuteVersion || 'latest'
       }
     }
   )
