@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import path from 'path'
 import meow from 'meow'
+import chalk from 'chalk'
 import copy from 'graceful-copy'
 import pathExists from 'path-exists'
 
@@ -21,8 +22,9 @@ function cwd(...args) {
 async function run() {
   const dir = cli.input[0] || './docs'
   const exists = await pathExists(cwd(dir))
+  console.log()
   if (exists && !cli.flags.force) {
-    return console.log(`dir ${dir} already exists, use \`docute init ${dir} --force\` to override it`)
+    return console.log(chalk.red(`  > dir ${dir} already exists, use \`docute init ${dir} --force\` to override it\n`))
   }
   await copy(
     ownDir('./template'),
@@ -33,8 +35,9 @@ async function run() {
       }
     }
   )
-  console.log(`Successfully generated boilerplates for docs!`)
-  console.log(`Run \`docute ${dir}\` to preview docs`)
+  console.log(chalk.green(`  > Successfully generated boilerplates for docs!`))
+  console.log(`  > Run \`docute ${dir}\` to preview docs`)
+  console.log()
 }
 
 run()
