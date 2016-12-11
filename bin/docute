@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import path from 'path'
 import spawn from 'cross-spawn'
+import update from 'update-notifier'
+import pkg from '../../package'
 
 const defaultCommand = 'preview'
 
@@ -31,3 +33,5 @@ proc.on('error', err => {
   console.error(err)
   process.exit(1)
 })
+
+update({pkg}).notify()
