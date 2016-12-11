@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import path from 'path'
 import meow from 'meow'
 import chalk from 'chalk'
 import express from 'express'
@@ -42,4 +43,4 @@ console.log(chalk.dim('  > hello docute user!'))
 console.log(`  > open ${chalk.yellow(`http://localhost:${port}`)} to preview`)
 console.log()
 
-livereload({files: [dir]})
+livereload({files: [`${path.basename(dir)}/**`]})
