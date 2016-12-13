@@ -4,7 +4,6 @@ import meow from 'meow'
 import chalk from 'chalk'
 import express from 'express'
 import injectReload from 'inject-lr-script'
-import livereload from '../lib/livereload'
 
 const cli = meow(`
 Usage: ${chalk.yellow('docute [dir] [options]')}
@@ -14,6 +13,7 @@ Commands:
   ${chalk.yellow('init')}                   Initialize a folder for docs
 
 Options:
+  ${chalk.yellow('--watch, -w')}            Enable live reloading
   ${chalk.yellow('--port, -p')}             Server port
   ${chalk.yellow('--version, -v')}          Print version
   ${chalk.yellow('--help, -h')}             Print help
@@ -24,6 +24,7 @@ Examples:
   docute --port 3000        ${chalk.dim('# running server at port 3000')}
 `, {
   alias: {
+    w: 'watch',
     p: 'port',
     h: 'help',
     v: 'version'
@@ -33,7 +34,10 @@ const dir = cli.input[0] || './docs'
 
 const app = express()
 
-app.use(injectReload())
+if (cli.flags.watch) {
+  app.use(injectReload())
+  require('../lib/livereload')({files: [`${path.basename(dir)}/**`]})
+}
 app.use('/', express.static(dir))
 
 const port = cli.flags.port || 8080
@@ -42,5 +46,3 @@ console.log()
 console.log(chalk.dim('  > hello docute user!'))
 console.log(`  > open ${chalk.yellow(`http://localhost:${port}`)} to preview`)
 console.log()
-
-livereload({files: [`${path.basename(dir)}/**`]})
