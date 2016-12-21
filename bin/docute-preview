@@ -40,7 +40,7 @@ if (cli.flags.watch) {
 app.use('/', express.static(dir))
 
 const port = cli.flags.port || 8080
-app.listen(port)
+app.listen(port, '0.0.0.0')
 console.log()
 console.log(chalk.dim('  > hello docute user!'))
 console.log(`  > open ${chalk.yellow(`http://localhost:${port}`)} to preview`)
