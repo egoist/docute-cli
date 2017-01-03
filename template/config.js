@@ -1,3 +1,3 @@
 self.$config = {
-  title: 'My Docs'
+  // config...
 }

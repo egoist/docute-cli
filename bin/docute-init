@@ -36,17 +36,19 @@ function cwd(...args) {
 }
 
 async function run() {
-  const dir = cli.input[0] || './docs'
+  const dir = cli.input[0] || 'docs'
   const exists = await pathExists(cwd(dir))
   console.log()
   if (exists && !cli.flags.force) {
     return console.log(chalk.red(`  > dir ${dir} already exists, use \`docute init ${dir} --force\` to override it\n`))
   }
+
   await copy(
     ownDir('./template'),
     cwd(dir),
     {
       data: {
+        name: dir,
         version: cli.flags.docuteVersion || 'latest'
       }
     }
