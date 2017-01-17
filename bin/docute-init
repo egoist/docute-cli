@@ -49,7 +49,7 @@ async function run() {
     {
       data: {
         name: dir,
-        version: cli.flags.docuteVersion || 'latest'
+        version: cli.flags.docuteVersion || '2'
       }
     }
   )
