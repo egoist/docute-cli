@@ -15,7 +15,8 @@
   "scripts": {
     "test": "eslint lib/*.js bin/* && npm run build",
     "build": "gulp build",
-    "dev": "gulp"
+    "dev": "gulp",
+    "prepublish": "npm test"
   },
   "files": [
     "dist",
