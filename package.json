@@ -57,6 +57,7 @@
     "graceful-copy": "^1.1.0",
     "meow": "^3.7.0",
     "path-exists": "^3.0.0",
+    "sw-precache": "^5.0.0",
     "tiny-lr": "^1.0.3",
     "update-notifier": "^1.0.3"
   }
