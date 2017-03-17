@@ -8,8 +8,7 @@ const defaultCommand = 'preview'
 
 const commands = new Set([
   defaultCommand,
-  'init',
-  'precache'
+  'init'
 ])
 
 let cmd = process.argv[2]
