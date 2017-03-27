@@ -2,6 +2,7 @@
 import meow from 'meow'
 import chalk from 'chalk'
 import express from 'express'
+import opn from 'opn'
 
 const cli = meow(`
 Usage: ${chalk.yellow('docute [dir] [options]')}
@@ -13,6 +14,7 @@ Commands:
 Options:
   ${chalk.yellow('--watch, -w')}            Enable live reloading
   ${chalk.yellow('--port, -p')}             Server port
+  ${chalk.yellow('--open, -o')}             Open browser
   ${chalk.yellow('--version, -v')}          Print version
   ${chalk.yellow('--help, -h')}             Print help
 
@@ -25,7 +27,8 @@ Examples:
     w: 'watch',
     p: 'port',
     h: 'help',
-    v: 'version'
+    v: 'version',
+    o: 'open'
   }
 })
 const dir = cli.input[0] || './docs'
@@ -47,3 +50,6 @@ if (cli.flags.watch) {
   console.log('  > watching')
 }
 console.log()
+if (cli.flags.open) {
+  opn(`http://localhost:${port}`)
+}
