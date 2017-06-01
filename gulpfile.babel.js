@@ -1,4 +1,4 @@
-import {task, input, output, watch} from 'gulp-named'
+import { task, input, output, watch } from 'gulp-named'
 import babel from 'gulp-babel'
 import chmod from 'gulp-chmod'
 
@@ -8,16 +8,11 @@ const paths = {
 }
 
 task('bin', () => {
-  input(paths.bin)
-    .pipe(babel())
-    .pipe(chmod(0o755))
-    .pipe(output('./dist/bin'))
+  input(paths.bin).pipe(babel()).pipe(chmod(0o755)).pipe(output('./dist/bin'))
 })
 
 task('lib', () => {
-  input(paths.lib)
-    .pipe(babel())
-    .pipe(output('./dist/lib'))
+  input(paths.lib).pipe(babel()).pipe(output('./dist/lib'))
 })
 
 task('watch', () => {
